@@ -1,0 +1,7 @@
+<svg width="140" height="140" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded black square -->
+  <rect x="0" y="0" width="140" height="140" rx="20" fill="#000"/>
+
+  <!-- White bold "P" -->
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="90" font-weight="bold" fill="#fff">P</text>
+</svg>

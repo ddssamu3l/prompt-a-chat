@@ -1,0 +1,8 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background rectangle -->
+        <rect width="150" height="150" fill="#cccccc" />
+        <!-- Head circle -->
+        <circle cx="75" cy="55" r="30" fill="#ffffff" />
+        <!-- Shoulders semicircle -->
+         <path d="M 35,115 A 40,40 0 0,1 115,115 Z" fill="#ffffff" />
+</svg>
