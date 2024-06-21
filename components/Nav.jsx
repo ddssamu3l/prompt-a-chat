@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 import {signIn, signOut, useSession, getProviders} from 'next-auth/react';
 
 const Nav = () => {
-    const isUserLoggedIn = true;
+    const{data: session} = useSession();
 
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -26,7 +26,7 @@ const Nav = () => {
             alt = "Prompt-A-Chat Logo"
             width = {30}
             height = {30}
-            classname = "object-contain"
+            className = "object-contain"
             />
 
             <p className = "logo_text">Prompt-A-Chat</p>
@@ -35,7 +35,7 @@ const Nav = () => {
         {/*Desktop Navigations*/}
         <div className = "sm:flex hidden">
             {/*If logged in, display navs. If not, return an empty component */}
-            {isUserLoggedIn ? (
+            {session?.user ? (
                 <div className = "flex gap-3 md:gap-5">
                     <Link href = "/create-prompt" className = "black_btn">
                         Create Prompt
@@ -68,7 +68,7 @@ const Nav = () => {
 
         {/*Mobile Navigations*/}
         <div className = "sm:hidden flex relative">
-            {isUserLoggedIn ? (
+            {session?.user ? (
                 <div className="flex">
                     <Image 
                         src = "/assets/icons/profile.svg"
