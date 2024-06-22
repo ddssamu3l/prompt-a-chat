@@ -2,7 +2,7 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
 import User from '@models/user';
-import { connectToDB } from '@utils/database';
+import { connectToDB } from '@utils/database.js';
 
 const handler = NextAuth({
   providers: [
@@ -13,14 +13,16 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
+      console.log("Session callback triggered:", session);
       // store the user id from MongoDB to session
-      const sessionUser = await User.findOne({ email: session.user.email });
+      const sessionUser = await User.findOne({ email: session.user.email })
       session.user.id = sessionUser._id.toString();
 
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
       try {
+        console.log("Sign-in attempt:", profile);
         await connectToDB();
 
         // check if user already exists
@@ -35,10 +37,10 @@ const handler = NextAuth({
           });
         }
 
-        return true
+        return true;
       } catch (error) {
         console.log("Error checking if user exists: ", error.message);
-        return false
+        return false;
       }
     },
   }
