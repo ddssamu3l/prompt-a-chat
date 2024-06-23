@@ -32,7 +32,7 @@ export const disconnectFromDB = async () => {
   try {
     await mongoose.disconnect();
     isConnected = false;
-    console.log('MongoDB disconnected');
+    console.log('MongoDB disconnected successfully');
   } catch (error) {
     console.error('Error disconnecting from MongoDB:', error.message);
     throw new Error('Failed to disconnect from MongoDB');

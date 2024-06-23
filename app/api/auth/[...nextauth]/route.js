@@ -33,6 +33,8 @@ const handler = NextAuth({
             image: profile.picture,
           });
           console.log("New user created: ", profile.username)
+        }else{
+          console.log("User already exists in the database");
         }
 
         console.log("Sign-in successful for:", profile.email);
