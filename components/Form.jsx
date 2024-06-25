@@ -16,6 +16,22 @@ const Form = ({ type, post, setPost, submitting, handleSubmit}) => {
             onSubmit = {handleSubmit}
             className = "mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
         >
+             <lable>
+                <span className = "font-satoshi font-semibold text-base text-grey-700">
+                    Post Title:
+                </span>
+            
+                <input 
+                    value = {post.title}
+                    onChange = {(e) => setPost({...post, 
+                        title: e.target.value})}
+                    placeholder = "What is the function of your prompt?:"
+                    required
+                    className = "form_input"
+                />
+            </lable>
+
+
             <lable>
                 <span className = "font-satoshi font-semibold text-base text-grey-700">
                     Your New AI Prompt
