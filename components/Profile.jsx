@@ -1,8 +1,24 @@
-import React from 'react'
-
-const Profile = () => {
+import PromptCard from "./PromptCard";
+const Profile = ({name, desc, data, handleEdit, handleDelete}) => {
   return (
-    <div>Profile</div>
+    <section className = "w-full">
+      <h1 className = "head_text">
+        <span className = "blue_gradient">{name}</span>
+        's Profile
+      </h1>
+      <p className = "desc">{desc}</p>
+
+      <div className = "mt-16 prompt_layout flex-center">
+        {data.map((post) => (
+          <PromptCard 
+            key = {post._id}
+            post = {post}
+            handleEdit = {() => handleEdit && handleEdit(post)}
+            handleDelete = {() => handleDelete && handleDelete(post)}
+          />
+        ))}
+      </div>
+    </section>
   )
 }
 
