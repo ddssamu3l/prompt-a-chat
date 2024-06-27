@@ -7,6 +7,7 @@ import {useRouter} from "next/navigation"
 import Profile from "@components/profile";
 
 const MyProfile = () => {
+    const router = useRouter();
     const {data: session} = useSession();
 
     const [posts, setPosts] = useState([]);
@@ -23,11 +24,11 @@ const MyProfile = () => {
         if(session?.user.id)fetchPosts(); 
       }, []);
 
-    const handleEdit = () => {
-
+    const handleEdit = (post) => {
+      router.push(`/update-prompt?id=${post._id}`)
     }
 
-    const handleDelete = async() => {
+    const handleDelete = async(post) => {
 
     }
   return (
@@ -36,9 +37,9 @@ const MyProfile = () => {
         name = {username}
         desc = "Welcome to your profile page"
         data = {posts}
-        handleEdit = {handleEdit}
+        handleEdit = {handleEdit} 
         handleDelete = {handleDelete}
-    />
+    />// inside Profile.jsx, each post in 'posts' will be able to access the handleEdit and handleDelete function
   )
 }
 

@@ -5,8 +5,12 @@ import Image from 'next/image';
 import {useSession} from 'next-auth/react';
 import {usePathname, useRouter} from 'next/navigation';
 
-const PromptCard = ({post, handleTagClick, handelEdit, handelDelete}) => {
+const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
   const [copied, setCopied] = useState("");
+
+  const {data: session} = useSession();
+  const pathName = usePathname();
+  const router = useRouter();
 
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -30,6 +34,7 @@ const PromptCard = ({post, handleTagClick, handelEdit, handelDelete}) => {
             <p className = "font-inter text-xs text-grey-500">{post.creator.email}</p>
           </div>
         </div>
+        <p className = "text-xs font-normal font satoshi">{copied? "prompt copied!" : "copy prompt"}</p>
         <div className='copy_btn' onClick={handleCopy}>
               <Image
                 src={
@@ -38,18 +43,35 @@ const PromptCard = ({post, handleTagClick, handelEdit, handelDelete}) => {
                     : "/assets/icons/copy.svg"
                 }
                 alt={copied === post.prompt ? "tick_icon" : "copy_icon"}
-                width={12}
-                height={12}
+                width={18}
+                height={18}
               />
         </div>
       </div>
-      <p className = "my-4 font-satoshi text-md font-semibold text-grey-700 ">{post.title}</p>
+      <p className = "my-4 font-satoshi text-md font-semibold text-grey-700 text-center">{post.title}</p>
       <p className = "my-4 font-satoshi text-sm text-grey-700 border border-gray-300 rounded-xl p-3">{post.prompt}</p>
 
       <p 
       className = "font-inter text-sm blue-gradient cursor-pointer"
-      onClick={() => handleClick && hantleTagClick (post.tag)}
+      onClick={() => handleClick && handleTagClick (post.tag)}
       >{post.tag}</p>
+
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
+        <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
+          <p
+            className='font-inter text-sm green_gradient cursor-pointer'
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className='font-inter text-sm orange_gradient cursor-pointer'
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   )
 }

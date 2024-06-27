@@ -25,7 +25,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit}) => {
                     value = {post.title}
                     onChange = {(e) => setPost({...post, 
                         title: e.target.value})}
-                    placeholder = "What is the function of your prompt?:"
+                    placeholder = "What is the function of your prompt?"
                     required
                     className = "form_input"
                 />

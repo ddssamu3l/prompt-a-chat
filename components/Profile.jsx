@@ -6,7 +6,6 @@ const Profile = ({name, desc, data, handleEdit, handleDelete}) => {
         <span className = "blue_gradient">{name}</span>
         's Profile
       </h1>
-      <p className = "desc">{desc}</p>
 
       <div className = "mt-16 prompt_layout flex-center">
         {data.map((post) => (

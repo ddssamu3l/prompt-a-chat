@@ -4,18 +4,32 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const Nav = () => {
     const { data: session } = useSession();
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         (async () => {
-          const res = await getProviders();
-          setProviders(res);
+            const res = await getProviders();
+            setProviders(res);
         })();
-      }, []);
+    }, []);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    const handleSignOut = async () => {
+        await signOut({ redirect: false });
+        router.push('/');
+    };
+
+    if (!isMounted) return null; // Avoid using router until mounted
 
     return (
         <nav className="flex-between w-full mb-16 pt-3">
@@ -37,7 +51,8 @@ const Nav = () => {
                         <Link href="/create-prompt" className="black_btn">
                             Create Prompt
                         </Link>
-                        <button type="button" onClick={signOut} className="outline_btn">
+                        
+                        <button type="button" onClick={handleSignOut} className="outline_btn">
                             Sign Out
                         </button>
                         <Link href="/profile">
@@ -54,7 +69,7 @@ const Nav = () => {
                     <>
                         {providers && Object.values(providers).map((provider) => (
                             <button type="button" key={provider.name} onClick={() => signIn(provider.id)} className="black_btn">
-                                Sign In
+                                Sign In and Try To Share A Post!
                             </button>
                         ))}
                     </>
@@ -93,7 +108,7 @@ const Nav = () => {
                                     type="button" 
                                     onClick={() => {
                                         setToggleDropdown(false);
-                                        signOut();
+                                        handleSignOut();
                                     }}
                                     className="mt-5 w-full black_btn"
                                 >
@@ -113,7 +128,7 @@ const Nav = () => {
                 )}
             </div>
         </nav>
-    )
-}
+    );
+};
 
 export default Nav;
