@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+const User = require('@/models/user'); // Adjust the path as necessary
+const Prompt = require('@/models/prompt'); // Import other models as needed
 
 let isConnected = false; // Track the connection status
 

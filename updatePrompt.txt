@@ -1,14 +1,14 @@
-"use client";
-
+{/*} "use client";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-
+import { useRouter, useSearchParams } from "next/navigation"; // Here is where you import useSearchParams()
+import User from '@models/user';
 import Form from "@components/Form";
+import { Suspense } from 'react';
 
 const EditPrompt = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const promptId = searchParams.get("id");
+  const searchParams = useSearchParams(); // Here is where you use useSearchParams()
+  const promptId = searchParams.get("id"); // Here is where you use it to get the "id" query parameter
 
   const [post, setPost] = useState({ title: "", prompt: "", tag: "", });
   const [submitting, setIsSubmitting] = useState(false);
@@ -55,14 +55,16 @@ const EditPrompt = () => {
   };
 
   return (
-    <Form
-      type='Edit'
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={updatePrompt}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Form
+        type='Edit'
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={updatePrompt}
+      />
+    </Suspense>
   );
 };
 
-export default EditPrompt;
+export default EditPrompt; */}
