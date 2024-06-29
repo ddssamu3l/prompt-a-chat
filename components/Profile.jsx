@@ -8,13 +8,13 @@ const Profile = ({name, desc, data, handleEdit, handleDelete}) => {
       </h1>
 
       <div className = "mt-16 prompt_layout flex-center">
-        {data.map((post) => (
+        {data.map((item) => (
           <PromptCard 
-            key = {post._id}
-            post = {post}
+            key = {item._id}
+            post = {item}
             handleTagClick = {() => {}}
-            handleEdit = {() => handleEdit && handleEdit(post)}
-            handleDelete = {() => handleDelete && handleDelete(post)}
+            handleEdit = {() => handleEdit && handleEdit(item)}
+            handleDelete = {() => handleDelete && handleDelete(item)}
           />
         ))}
       </div>
