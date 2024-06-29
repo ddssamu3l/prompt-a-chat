@@ -23,7 +23,7 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
     console.log(post);
     // edge case: if the post's creator is the same as the user who is currently logged in, then go to the user's specific profile in /profile
     // else: go to a "profile page" that shows all of the posts made by the user who got clicked
-    if(post.creator.id === session?.user.id)
+    if(post.creator._id === session?.user.id)
       router.push("/profile");
     else
       router.push(`/profile/${post.creator._id}?username=${post.creator.username}`);
