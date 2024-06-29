@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; // Here is where you import useSearchParams()
 import Form from "@components/Form";
+import {Suspense} from 'react';
 
 const EditPrompt = () => {
   const router = useRouter();
@@ -53,6 +54,7 @@ const EditPrompt = () => {
   };
 
   return (
+    <Suspense>
       <Form
         type='Edit'
         post={post}
@@ -60,6 +62,7 @@ const EditPrompt = () => {
         submitting={submitting}
         handleSubmit={updatePrompt}
       />
+    </Suspense>
   );
 };
 
