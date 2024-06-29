@@ -11,7 +11,7 @@ const LandingPage = () => {
        
         
         <p className = "desc text-center mt-3 lg:font-lg">Got something in mind but don't know how to tell ChatGPT? Find it on Prompt-A-Chat!</p>
-        <p className = "desc text-centermt-2">Prompt-A-Chat is an open-source prompt library for ChatGPT that allows users to discover, search, create and share useful prompts to use on ChatGPT. </p>
+        <p className = "desc text-centermt-2">Prompt-A-Chat is an online prompt library for ChatGPT that allows users to discover, search, create and share useful prompts to use on ChatGPT. </p>
     </div>
   )
 }

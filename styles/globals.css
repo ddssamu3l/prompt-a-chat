@@ -171,3 +171,16 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.hover-enlarge {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Custom hover effect for image resizing */
+.hover-enlarge {
+  transition: transform 0.1s ease-in-out;
+}
+
+.hover-enlarge:hover {
+  transform: scale(1.15); /* Scales the image to 125% */
+}

@@ -56,10 +56,18 @@ export const DELETE = async (request, {params}) => {
         // connect to database
         await connectToDB();
 
-        await Prompt.findByIdAndRemove(params.id);
+        // findByIdAndDelete is a mongoose special function. It finds a data with the same id and deletes it
+        const result = await Prompt.findByIdAndDelete(params.id);
+        if (!result) {
+            console.log(`No prompt found with id= ${params.id}`);
+            return new Response(`No prompt found with id= ${params.id}`, {status: 404});
+        }
+        console.log(`Prompt deleted successfully! id= ${params.id}`);
+        return new Response(`Prompt deleted successfully! id= ${params.id}`, {status: 200});
+        
 
-        return new Response(`Prompt deleted successfully! id= ${params.id}`, {status: 200})
     } catch (error) {
+        console.error('Unexpected error ', error);
         return new Response(`Failed to delete the prompt. id= ${params.id}`, {status: 500})
     }
 };

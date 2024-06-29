@@ -57,7 +57,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit}) => {
                     value = {post.tag}
                     onChange = {(e) => setPost({...post, 
                         tag: e.target.value})}
-                    placeholder = "What kinds of subjects does your prompt cover?"
+                    placeholder = "Give your post a SINGLE tag"
                     required
                     className = "form_input"
                 />
@@ -65,7 +65,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit}) => {
 
             <div className = "flex-end mx-3 mb-5 gap-4">
                 <Link href = "/" className = 'text-grey-500 text-sm'>
-                    Cancel 
+                    Nevermind 
                 </Link>
 
                 <button
