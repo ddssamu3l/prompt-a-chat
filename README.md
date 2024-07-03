@@ -3,7 +3,7 @@
 ![Prompt-A-Chat_LandingPage](https://github.com/ddssamu3l/prompt-a-chat/assets/72890797/806a5d71-07ff-4bc2-931e-44c5e959a926)
 
 
-Video Demo on YouTube: https://www.youtube.com/watch?v=6cpMVrPWkZQ
+### Video Demo on YouTube: https://www.youtube.com/watch?v=6cpMVrPWkZQ
 
 ## Tech Stack
 - Next.js 14
