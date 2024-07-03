@@ -4,3 +4,10 @@ https://prompt-a-chat-h5ynvd9ht-dd-dengs-projects.vercel.app
 
 Video Demo on YouTube: https://www.youtube.com/watch?v=6cpMVrPWkZQ
 
+## Tech Stack
+- Next.js 14
+- NextAuth
+- Google cloud
+- MongoDB
+- TailwindCSS
+
